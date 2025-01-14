@@ -1,11 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Home from './templates/LoginSignup';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import UserProfile from './templates/UserProfile';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Home />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/userprofile" element={<UserProfile />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
 );
 

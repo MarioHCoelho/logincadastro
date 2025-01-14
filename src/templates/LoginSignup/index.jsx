@@ -1,29 +1,32 @@
+/* eslint-disable no-unused-vars */
 import './styles.css';
+import '../../styles/globalstyle.css';
 
 import user_icon from '../../assets/person.png';
 import email_icon from '../../assets/email.png';
 import password_icon from '../../assets/lock.png';
-import { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import UserProfile from '../UserProfile';
 function Home() {
-  const [action, setAction] = useState('Sign Up!');
+  const navigate = useNavigate();
   return (
     <div className="container">
+      <Routes>
+        <Route path="/home" element={<Home />} />
+        <Route path="/userprofile" element={<UserProfile />} />
+      </Routes>
       <div className="header">
+        <h1>Welcome</h1>
         <div className="text">
-          {action}
           <div className="underline"></div>
         </div>
         <div className="inputs">
-          {action === 'Login' ? (
-            <div></div>
-          ) : (
-            <div className="input">
-              <img src={user_icon} alt="" />
-              <input type="text" placeholder="Name" />
-            </div>
-          )}
-
+          <div></div>
+          <div className="input">
+            <img src={user_icon} alt="" />
+            <input type="text" placeholder="Name" />
+          </div>
           <div className="inputs">
             <div className="input">
               <img src={email_icon} alt="" />
@@ -35,30 +38,21 @@ function Home() {
                 <input type="password" placeholder="Password" />
               </div>
             </div>
-            {action === 'Sign Up!' ? (
-              <div></div>
-            ) : (
-              <div className="forgot-password">
-                <span>Forgot Your Password ?</span>
-              </div>
-            )}
-
+            <div></div>
+            <div className="forgot-password">
+              <span>Forgot Your Password ?</span>
+            </div>
             <div className="submit-container">
-              <div
-                className={action === 'Login' ? 'submit gray' : 'submit'}
-                onClick={() => {
-                  setAction('Sign Up!');
-                }}
-              >
-                Sign Up
+              <div>
+                <button type="button">Sign Up!</button>
               </div>
-              <div
-                className={action === 'Sign Up!' ? 'submit gray' : 'submit'}
-                onClick={() => {
-                  setAction('Login');
-                }}
-              >
-                Login
+              <div>
+                <button
+                  type="button"
+                  onClick={() => navigate('/userprofile', { replace: true })}
+                >
+                  Login
+                </button>
               </div>
             </div>
           </div>

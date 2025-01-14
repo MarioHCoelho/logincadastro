@@ -1,0 +1,20 @@
+*
+{
+    margin: 0;
+    padding: 0;
+
+}
+
+
+
+
+[data-theme="dark"]
+{
+    --primary-background--color:#191919;
+    --secondary-background-color: #001311;
+}
+
+body
+{
+    background: var(--primary-background--color);
+}
